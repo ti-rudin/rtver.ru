@@ -24,16 +24,16 @@
   import { Login } from 'sveltegram';
   import MdEmail from '../components/MdEmail.svelte';
   import MdToday from '../components/MdToday.svelte';
-  import CowIcon from '../components/CowIcon.svelte';
-
-  import MdFileUpload from '../components/MdFileUpload.svelte';
+  import TyagachIcon from '../components/TyagachIcon.svelte';
+  import TraktorIcon from '../components/TraktorIcon.svelte';
+  import AutoIcon from '../components/AutoIcon.svelte';
 
   let activeTab = 'tab-1';
   let isTabbarLabels = true;
   let isTabbarIcons = true;
 
   import { afterUpdate } from 'svelte';
-  import GoatIcon from '../components/GoatIcon.svelte';
+  
 
 
   
@@ -117,7 +117,7 @@
         <svelte:fragment slot="icon">
           <Icon>
             
-            <GoatIcon slot="material" class="w-7 h-7" />
+            <TraktorIcon slot="material" class="w-7 h-7" />
           </Icon>
         </svelte:fragment>
       </TabbarLink>
@@ -129,13 +129,25 @@
         <svelte:fragment slot="icon">
           <Icon>
        
-            <CowIcon slot="material" class="w-7 h-7" />
+            <TyagachIcon slot="material" class="w-7 h-7" />
+          </Icon>
+        </svelte:fragment>
+      </TabbarLink>
+         <TabbarLink
+        active={activeTab === 'tab-3'}
+        onClick={() => (activeTab = 'tab-3')}
+        label={isTabbarLabels ? '' : undefined}
+      >
+        <svelte:fragment slot="icon">
+          <Icon>
+       
+            <AutoIcon slot="material" class="w-7 h-7" />
           </Icon>
         </svelte:fragment>
       </TabbarLink>
       <TabbarLink
-        active={activeTab === 'tab-3'}
-        onClick={() => (activeTab = 'tab-3')}
+        active={activeTab === 'tab-4'}
+        onClick={() => (activeTab = 'tab-4')}
         label={isTabbarLabels ? 'Настройки' : undefined}
       >
         <svelte:fragment slot="icon">
@@ -156,9 +168,14 @@
         onClick={() => (activeTab = 'tab-2')}
         label={isTabbarLabels ? '' : undefined}
       />
-      <TabbarLink
+       <TabbarLink
         active={activeTab === 'tab-3'}
         onClick={() => (activeTab = 'tab-3')}
+        label={isTabbarLabels ? '' : undefined}
+      />
+      <TabbarLink
+        active={activeTab === 'tab-4'}
+        onClick={() => (activeTab = 'tab-4')}
         label={isTabbarLabels ? 'Настройки' : undefined}
       />
     {/if}
@@ -168,21 +185,30 @@
   {#if activeTab === 'tab-1'}
     <Block strong inset class="space-y-4">
       <p>
-        <b>Тут коза</b>
+        <b>Тут спецтехника</b>
       </p>
-     <GoatIcon class="w-8"/>
+     <TraktorIcon class="w-8"/>
     </Block>
   {/if}
   {#if activeTab === 'tab-2'}
     <Block strong inset class="space-y-4">
       <p>
-        <b>Тут корова</b>
+        <b>Тут траспорт</b>
       </p>
-     <CowIcon></CowIcon>
+     <TyagachIcon/>
  
     </Block>
   {/if}
   {#if activeTab === 'tab-3'}
+    <Block strong inset class="space-y-4">
+      <p>
+        <b>Тут легковые авто</b>
+      </p>
+     <AutoIcon/>
+ 
+    </Block>
+  {/if}
+  {#if activeTab === 'tab-4'}
 
   <Login
   username="RtverBot"
