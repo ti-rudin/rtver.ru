@@ -1,0 +1,25 @@
+{
+  "name": "vite-project",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "start": "vite --host",
+    "build": "vite build",
+    "serve": "vite preview --host"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.4.0",
+    "autoprefixer": "^10.4.19",
+    "framework7-icons": "^5.0.5",
+    "history": "^5.3.0",
+    "konsta": "^2.0.0",
+    "postcss": "^8.4.38",
+    "svelte": "^4.2.12",
+    "svelte-navigator": "^3.2.2",
+    "tailwindcss": "^3.4.1",
+    "vite": "^3.2.8"
+  },
+  "dependencies": {
+    "sveltegram": "^1.1.10"
+  }
+}
