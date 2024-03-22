@@ -82,7 +82,7 @@
     //	hash: 'dfdfc4ed1a3102a6d08e0dc5fa18de0822464ac'
     //};
 
-    fetch("https://api.ti-agro.ru/hello/", {
+    fetch("https://api.rtver.ru/hello/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -185,7 +185,7 @@
   {#if activeTab === 'tab-3'}
 
   <Login
-  username="TiAgroBot"
+  username="RtverBot"
   requestAccess={true}
   on:auth={(data) => {
     console.log(data.detail)
