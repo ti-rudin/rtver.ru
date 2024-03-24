@@ -184,7 +184,7 @@ let r = JSON.stringify(data);
 	{#if activeTab === 'tab-1'}
 	  <Block strong inset class="space-y-4">
 		<p>
-		  <b>Тут спецтехника</b>
+		  <b>Тут спецтехника{r}</b>
 		</p>
 	   <TraktorIcon class="w-8"/>
 	  </Block>

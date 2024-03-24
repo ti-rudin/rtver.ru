@@ -1,8 +1,8 @@
-import { PUBLIC_STRAPI_URL } from '$env/static/public';
+
 import qs from 'qs';
 
 export const getStrapiURL = (path = '') => {
-	return `${PUBLIC_STRAPI_URL || 'http://api.rtver.ru:1337'}${path}`;
+	return `${'http://api.rtver.ru:1337'}${path}`;
 };
 
 export const getStrapiMedia = async (url) => {
