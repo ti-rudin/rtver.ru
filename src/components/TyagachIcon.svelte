@@ -1,5 +1,5 @@
 <script>
-  import IconSrc from '../images/tyagach.png';
+  import IconSrc from '../lib/images/tyagach.png';
 </script>
 
 <img src={IconSrc} alt="icon"  />

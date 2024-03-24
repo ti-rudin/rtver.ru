@@ -1,25 +1,38 @@
 {
-  "name": "vite-project",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite --host",
-    "start": "vite --host",
-    "build": "vite build",
-    "serve": "vite preview --host"
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.4.0",
-    "autoprefixer": "^10.4.19",
-    "framework7-icons": "^5.0.5",
-    "history": "^5.3.0",
-    "konsta": "^2.0.0",
-    "postcss": "^8.4.38",
-    "svelte": "^4.2.12",
-    "svelte-navigator": "^3.2.2",
-    "tailwindcss": "^3.4.1",
-    "vite": "^3.2.8"
-  },
-  "dependencies": {
-    "sveltegram": "^1.1.10"
-  }
+	"name": "frontend",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@iconify-json/heroicons": "^1.1.20",
+		"@iconify-json/simple-icons": "^1.1.95",
+		"@sveltejs/adapter-auto": "^3.1.1",
+		"@sveltejs/kit": "^2.5.3",
+		"@sveltejs/vite-plugin-svelte": "^3.0.2",
+		"@tailwindcss/typography": "^0.5.10",
+		"autoprefixer": "^10.4.18",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.35.1",
+		"postcss": "^8.4.35",
+		"prettier": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.2",
+		"qs": "^6.12.0",
+		"svelte": "^4.2.12",
+		"tailwindcss": "^3.4.1",
+		"unplugin-icons": "^0.18.5",
+		"vite": "^5.1.6"
+	},
+	"type": "module",
+	"dependencies": {
+		"bits-ui": "^0.19.6",
+		"konsta": "^3.1.2",
+		"sveltegram": "^1.1.10"
+	}
 }
