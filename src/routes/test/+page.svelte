@@ -42,12 +42,13 @@
 			body: JSON.stringify(msg)
 		})
 			.then((response) => {
+                userdata = JSON.stringify(msg);
+				localStorage.setItem('userdata', userdata);
 				return response.json();
 			})
 			.then((data) => {
 				console.dir(data.r);
-				userdata = data.r;
-				localStorage.setItem('userdata', userdata);
+			
 			});
 	};
 </script>
