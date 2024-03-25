@@ -47,7 +47,7 @@
 			.then((data) => {
 				console.dir(data.r);
 				userdata = data.r;
-				localStorage.setItem('userdata', JSON.stringify(userdata));
+				localStorage.setItem('userdata', userdata);
 			});
 	};
 </script>
