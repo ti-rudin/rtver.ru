@@ -23,15 +23,16 @@
 	import { Login } from 'sveltegram';
 
 	import MdToday from '../components/MdToday.svelte';
-	import TyagachIcon from '../components/TyagachIcon.svelte';
+	import LudiIcon from '../components/LudiIcon.svelte';
 	import TraktorIcon from '../components/TraktorIcon.svelte';
-	import AutoIcon from '../components/AutoIcon.svelte';
+	import KontraktIcon from '../components/KontraktIcon.svelte';
 
 	let activeTab = 'tab-1';
 	let isTabbarLabels = true;
 	let isTabbarIcons = true;
 
 	import { afterUpdate } from 'svelte';
+
 
 	export let colorPickerOpened;
 
@@ -105,7 +106,7 @@
 			>
 				<svelte:fragment slot="icon">
 					<Icon>
-						<TyagachIcon slot="material" class="w-7 h-7" />
+						<LudiIcon slot="material" class="w-7 h-7" />
 					</Icon>
 				</svelte:fragment>
 			</TabbarLink>
@@ -116,7 +117,7 @@
 			>
 				<svelte:fragment slot="icon">
 					<Icon>
-						<AutoIcon slot="material" class="w-7 h-7" />
+						<KontraktIcon slot="material" class="w-7 h-7" />
 					</Icon>
 				</svelte:fragment>
 			</TabbarLink>
@@ -158,7 +159,7 @@
 	{#if activeTab === 'tab-1'}
 		<Block strong inset class="space-y-4">
 			<p>.
-				<b>Тут спецтехника{r}</b>
+				<b>Тут техника</b>
 			</p>
 			<TraktorIcon class="w-8" />
 		</Block>
@@ -166,29 +167,21 @@
 	{#if activeTab === 'tab-2'}
 		<Block strong inset class="space-y-4">
 			<p>
-				<b>Тут траспорт</b>
+				<b>Тут 	пипл{r}</b>
 			</p>
-			<TyagachIcon />
+			<LudiIcon />
 		</Block>
 	{/if}
 	{#if activeTab === 'tab-3'}
 		<Block strong inset class="space-y-4">
 			<p>
-				<b>Тут легковые авто</b>
+				<b>Тут контракты</b>
 			</p>
-			<AutoIcon />
+			<KontraktIcon />
 		</Block>
 	{/if}
 	{#if activeTab === 'tab-4'}
-		<Login
-			username="RtverBot"
-			requestAccess={true}
-			on:auth={(data) => {
-				console.log(data.detail);
-				hello(data.detail);
-				//goto('/blog');
-			}}
-		/>
+	
 
 		<List strong inset>
 			<ListItem title="Тёмная тема" label>
@@ -196,6 +189,16 @@
 			</ListItem>
 
 		</List>
+		<Login
+		username="RtverBot"
+		requestAccess={true}
+		on:auth={(data) => {
+			console.log(data.detail);
+			hello(data.detail);
+			//goto('/blog');
+		}}
+	/>
+
 	
 	{/if}
 </Page>
