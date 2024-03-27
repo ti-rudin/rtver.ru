@@ -23,7 +23,7 @@
 
 	let darkMode = false;
 	let userdata;
-	let hello = function (/** @type {any} */ msg) {
+	let hello = function (/** @type {object} */ msg) {
 		//let msg = {
 		//	id: 5454543,
 		//	first_name: 'Александр',
@@ -51,10 +51,12 @@
 			
 			});
 	};
-	
+	function test(){
+		hello({"test":"wewewewe"})
+	}
 </script>
 <Page>
-    <Button onclick={hello({"test":"sdsd"})}>ddd</Button>
+    <button type="button" on:click={test}>ddd</button>
     <List strong inset>
         <ListItem title="Тёмная тема" label>
             <Login
