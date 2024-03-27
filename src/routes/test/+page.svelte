@@ -51,10 +51,10 @@
 			
 			});
 	};
-	hello('test');
+	
 </script>
 <Page>
-    <div>ddd</div>
+    <Button on:click={hello({"test":"sdsd"})}>ddd</Button>
     <List strong inset>
         <ListItem title="Тёмная тема" label>
             <Login
