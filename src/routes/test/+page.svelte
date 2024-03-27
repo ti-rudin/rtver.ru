@@ -54,7 +54,7 @@
 	
 </script>
 <Page>
-    <Button on:click={hello({"test":"sdsd"})}>ddd</Button>
+    <Button onclick={hello({"test":"sdsd"})}>ddd</Button>
     <List strong inset>
         <ListItem title="Тёмная тема" label>
             <Login
