@@ -21,6 +21,7 @@
 	} from 'konsta/svelte';
     import { Login } from 'sveltegram';
 
+
 	let darkMode = false;
 	let userdata;
 	let hello = function (/** @type {object} */ msg) {
@@ -52,6 +53,7 @@
 			});
 	};
 	function test(){
+	
 		hello({"test":"wewewewe"})
 	}
 </script>

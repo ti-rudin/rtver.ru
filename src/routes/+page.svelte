@@ -31,7 +31,7 @@
 	let isTabbarLabels = true;
 	let isTabbarIcons = true;
 
-	import { afterUpdate } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 
 
 	export let colorPickerOpened;
@@ -54,9 +54,20 @@
 		darkMode = document.documentElement.classList.contains('dark');
 		rtl = document.dir === 'rtl';
 	});
+	onMount(() => {
+		let userdata = localStorage.getItem('userdata');
+		if (userdata !== null) {
+			console.log(userdata)
+		} else {
+			console.log('userdata undef')
+			hello({"p1":"test"})
+		}
 
-	let userdata;
+	});
+
+	
 	let hello = function (/** @type {any} */ msg) {
+		let userdata;
 		//let msg = {
 		//	id: 5454543,
 		//	first_name: 'Александр',
