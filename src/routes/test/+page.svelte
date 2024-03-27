@@ -51,16 +51,13 @@
 			
 			});
 	};
+	hello('test');
 </script>
 <Page>
     <div>ddd</div>
     <List strong inset>
         <ListItem title="Тёмная тема" label>
-            <Toggle slot="after" component="div" onChange={() => toggleDarkMode()} checked={darkMode} />
-        </ListItem>
-
-    </List>
-    <Login
+            <Login
     username="RtverBot"
     requestAccess={true}
     on:auth={(data) => {
@@ -69,4 +66,8 @@
         //goto('/blog');
     }}
 />
+        </ListItem>
+
+    </List>
+   
 </Page>
