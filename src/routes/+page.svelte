@@ -17,6 +17,8 @@
 		TabbarLink,
 		Icon,
 		Link,
+		Segmented,
+    SegmentedButton,
 		Popover
 	} from 'konsta/svelte';
 
@@ -94,9 +96,24 @@
 				localStorage.setItem('userdata', JSON.stringify(userdata));
 			});
 	};
+	let rightOpen = false;
+	const riOp = function (){
+		rightOpen=true
+	}
 </script>
 
 <Page>
+	<Navbar title="РТверь" 
+	class="top-0 sticky"
+  
+	>
+	<Link href ="/kabinet" slot="right" navbar>
+	Кабинет сотрудника
+		
+	</Link>
+
+</Navbar>
+
 	<Tabbar labels={isTabbarLabels} icons={isTabbarIcons} class="left-0 bottom-0 fixed">
 		{#if isTabbarIcons}
 			<TabbarLink
@@ -132,17 +149,7 @@
 					</Icon>
 				</svelte:fragment>
 			</TabbarLink>
-			<TabbarLink
-				active={activeTab === 'tab-4'}
-				onClick={() => (activeTab = 'tab-4')}
-				label={isTabbarLabels ? 'Настройки' : undefined}
-			>
-				<svelte:fragment slot="icon">
-					<Icon>
-						<MdToday slot="material" class="w-7 h-7" />
-					</Icon>
-				</svelte:fragment>
-			</TabbarLink>
+
 		{:else}
 			<TabbarLink
 				active={activeTab === 'tab-1'}
@@ -159,11 +166,7 @@
 				onClick={() => (activeTab = 'tab-3')}
 				label={isTabbarLabels ? '' : undefined}
 			/>
-			<TabbarLink
-				active={activeTab === 'tab-4'}
-				onClick={() => (activeTab = 'tab-4')}
-				label={isTabbarLabels ? 'Настройки' : undefined}
-			/>
+
 		{/if}
 	</Tabbar>
 
@@ -189,27 +192,24 @@
 				<b>Тут контракты</b>
 			</p>
 			<KontraktIcon />
+
+			<List strong inset>
+				<ListItem title="Тёмная тема" label>
+					<Toggle slot="after" component="div" onChange={() => toggleDarkMode()} checked={darkMode} />
+				</ListItem>
+	
+			</List>
+			<Login
+			username="RtverBot"
+			requestAccess={true}
+			on:auth={(data) => {
+				console.log(data.detail);
+				hello(data.detail);
+				//goto('/blog');
+			}}
+		/>
+	
 		</Block>
 	{/if}
-	{#if activeTab === 'tab-4'}
-	
 
-		<List strong inset>
-			<ListItem title="Тёмная тема" label>
-				<Toggle slot="after" component="div" onChange={() => toggleDarkMode()} checked={darkMode} />
-			</ListItem>
-
-		</List>
-		<Login
-		username="RtverBot"
-		requestAccess={true}
-		on:auth={(data) => {
-			console.log(data.detail);
-			hello(data.detail);
-			//goto('/blog');
-		}}
-	/>
-
-	
-	{/if}
 </Page>
