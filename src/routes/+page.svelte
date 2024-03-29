@@ -36,8 +36,6 @@
 
 	import { afterUpdate, onMount } from 'svelte';
 
-
-
 	let darkMode = false;
 
 	const toggleDarkMode = () => {
@@ -58,15 +56,24 @@
 	onMount(() => {
 		userdata = localStorage.getItem('userdata');
 		if (userdata) {
-		userIsAuth = true;
-		console.log('tru');
-	}
+			userIsAuth = true;
+			console.log('tru');
+		}
 		if (userdata !== null) {
 			console.log(userdata);
 		} else {
 			console.log('userdata undef');
-		
 		}
+		//let testauth = {
+		//	id: 5454543,
+		//	first_name: 'Александр',
+		//	last_name: 'Иванов',
+		//	username: 'ivanov',
+		//	photo_url: 'https://t.me/i/userpic/3HRmcAQC08hWbMziD-L8.jpg',
+		//	auth_date: 1710750836,
+		//	hash: 'dfdfc4ed1a3102a6d08e0dc5fa18de0822464ac'
+		//};
+		//localStorage.setItem('userdata', JSON.stringify(testauth));
 	});
 
 	let userdata;
@@ -95,43 +102,36 @@
 				console.dir(data.r);
 				userdata = data.r;
 				localStorage.setItem('userdata', JSON.stringify(userdata));
-				
 			});
 	};
 	let userIsAuth = false;
-
 </script>
 
 <Page>
-	<Navbar title="РТверь" class="top-0 sticky" >
-		<div slot="right" >
-		{#if !userIsAuth}
-			<Link href="/kabinet" navbar iconOnly slot="right">
-				Кабинет сотрудника
-				<Icon badgeColors={{ bg: 'bg-red-500' }}>
-					<MdPerson slot="material" class="w-6 h-6" />
-				</Icon>
-			</Link>
-		{:else}
-	
-	
-		<Link href="/kabinet" navbar iconOnly slot="right">
-			<Chip class="m-0.5">
-			
-				<img
-					slot="media"
-					alt="avatar"
-					class="h-8 rounded-full"
-					src={JSON.parse(userdata)?.photo_url}
-				/>
-				{JSON.parse(userdata)?.first_name}
-				{JSON.parse(userdata)?.last_name}
-		
-			</Chip>
-		</Link>
-		
-		{/if}
-	</div>
+	<Navbar title="РТверь" class="top-0 sticky">
+		<div slot="right">
+			{#if !userIsAuth}
+				<Link href="/kabinet" navbar iconOnly slot="right">
+					Кабинет сотрудника
+					<Icon badgeColors={{ bg: 'bg-red-500' }}>
+						<MdPerson slot="material" class="w-6 h-6" />
+					</Icon>
+				</Link>
+			{:else}
+				<Link href="/kabinet" navbar iconOnly slot="right">
+					<Chip class="m-0.5">
+						<img
+							slot="media"
+							alt="avatar"
+							class="h-8 rounded-full"
+							src={JSON.parse(userdata)?.photo_url}
+						/>
+						{JSON.parse(userdata)?.first_name}
+						{JSON.parse(userdata)?.last_name}
+					</Chip>
+				</Link>
+			{/if}
+		</div>
 	</Navbar>
 
 	<Tabbar labels={isTabbarLabels} icons={isTabbarIcons} class="left-0 bottom-0 fixed">

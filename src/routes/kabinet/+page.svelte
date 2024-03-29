@@ -62,34 +62,61 @@
 		history.back();
 	};
 	let userIsAuth = false;
+
+	let popoverOpened = false;
+	let popoverTargetEl = null;
+
+	const openPopover = (targetEl) => {
+		popoverTargetEl = targetEl;
+		popoverOpened = true;
+	};
+	import { afterUpdate, onMount } from 'svelte';
+	onMount(() => {
+		userdata = localStorage.getItem('userdata');
+		});
+		$: userIsAuth = (userdata);
 </script>
 
 <Page>
-	<Navbar title="" class="top-0 sticky" >
-		<div slot="right" >
-		{#if userIsAuth}
-		
-	
-		<Link href="/kabinet" navbar iconOnly slot="right">
-			<Chip class="m-0.5">
-			
-				<img
-					slot="media"
-					alt="avatar"
-					class="h-8 rounded-full"
-					src={JSON.parse(userdata)?.photo_url}
-				/>
-				{JSON.parse(userdata)?.first_name}
-				{JSON.parse(userdata)?.last_name}
-		
-			</Chip>
-		</Link>
-		
-		{/if}
-	</div>
+	<Navbar title="" class="top-0 sticky">
+		<div slot="right">
+			{#if userIsAuth}
+				<Link
+					onClick={() => openPopover('.popover-navbar-link')}
+					navbar
+					iconOnly
+					slot="right"
+					class="popover-navbar-link"
+				>
+					<Chip class="m-0.5">
+						<img
+							slot="media"
+							alt="avatar"
+							class="h-8 rounded-full"
+							src={JSON.parse(userdata)?.photo_url}
+						/>
+						{JSON.parse(userdata)?.first_name}
+						{JSON.parse(userdata)?.last_name}
+					</Chip>
+				</Link>
+			{/if}
+			<Popover
+				opened={popoverOpened}
+				target={popoverTargetEl}
+				onBackdropClick={() => (popoverOpened = false)}
+			>
+				<List nested>
+					<ListItem title="Item 1" link onClick={() => (popoverOpened = false)} />
+					<ListItem title="List Item 2" link onClick={() => (popoverOpened = false)} />
+					<ListItem title="Item 3" link onClick={() => (popoverOpened = false)} />
+					<ListItem title="List Item 4" link onClick={() => (popoverOpened = false)} />
+					<ListItem title="Item 5" link onClick={() => (popoverOpened = false)} />
+				</List>
+			</Popover>
+		</div>
 
-		<NavbarBackLink href="/" slot="left" >&nbsp;На главную</NavbarBackLink>
-		
+		<NavbarBackLink href="/" slot="left">&nbsp;На главную</NavbarBackLink>
+
 		<Segmented slot="subnavbar" strong activeButtonIndex={0} childButtonsLength={3}>
 			<SegmentedButton href="/kabinet/" small strong active>Специалист</SegmentedButton>
 			<SegmentedButton href="/kabinet/owner/" small strong>Владелец техники</SegmentedButton>
@@ -99,14 +126,14 @@
 	<List strong inset>
 		<ListItem title="" label>
 			<Login
-			username="RtverBot"
-			requestAccess={true}
-			on:auth={(data) => {
-				console.log(data.detail);
-				hello(data.detail);
-				//goto('/blog');
-			}}
-		/>
+				username="RtverBot"
+				requestAccess={true}
+				on:auth={(data) => {
+					console.log(data.detail);
+					hello(data.detail);
+					//goto('/blog');
+				}}
+			/>
 		</ListItem>
 	</List>
 </Page>
