@@ -19,7 +19,9 @@
 		Link,
 		Segmented,
     SegmentedButton,
-		Popover
+		Popover,
+		PersonCircleFill,
+		MdPerson
 	} from 'konsta/svelte';
 
 	import { Login } from 'sveltegram';
@@ -107,10 +109,14 @@
 	class="top-0 sticky"
   
 	>
-	<Link href ="/kabinet" slot="right" navbar>
-	Кабинет сотрудника
-		
-	</Link>
+
+	<Link href ="/kabinet" navbar iconOnly slot="right">
+		Кабинет сотрудника
+		<Icon badge="5" badgeColors={{ bg: 'bg-red-500' }}>
+		  <PersonCircleFill slot="ios" class="w-7 h-7" />
+		  <MdPerson slot="material" class="w-6 h-6" />
+		</Icon>
+	  </Link>
 
 </Navbar>
 
