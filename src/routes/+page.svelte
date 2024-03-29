@@ -18,15 +18,14 @@
 		Icon,
 		Link,
 		Segmented,
-    SegmentedButton,
+		SegmentedButton,
 		Popover,
-		PersonCircleFill,
-		MdPerson
+		Chip
 	} from 'konsta/svelte';
 
 	import { Login } from 'sveltegram';
 
-	import MdToday from '../components/MdToday.svelte';
+	import MdPerson from '$lib/MdPerson.svelte';
 	import LudiIcon from '../components/LudiIcon.svelte';
 	import TraktorIcon from '../components/TraktorIcon.svelte';
 	import KontraktIcon from '../components/KontraktIcon.svelte';
@@ -36,7 +35,6 @@
 	let isTabbarIcons = true;
 
 	import { afterUpdate, onMount } from 'svelte';
-
 
 	export let colorPickerOpened;
 
@@ -53,25 +51,26 @@
 
 	let rtl = false;
 
-
 	afterUpdate(() => {
 		darkMode = document.documentElement.classList.contains('dark');
 		rtl = document.dir === 'rtl';
 	});
 	onMount(() => {
 		let userdata = localStorage.getItem('userdata');
+		if (userdata) {
+		rightOpen = true;
+		console.log('tru');
+	}
 		if (userdata !== null) {
-			console.log(userdata)
+			console.log(userdata);
 		} else {
-			console.log('userdata undef')
-			hello({"p1":"test"})
+			console.log('userdata undef');
+		
 		}
-
 	});
 
-	
+	let userdata;
 	let hello = function (/** @type {any} */ msg) {
-		let userdata;
 		//let msg = {
 		//	id: 5454543,
 		//	first_name: 'Александр',
@@ -96,29 +95,40 @@
 				console.dir(data.r);
 				userdata = data.r;
 				localStorage.setItem('userdata', JSON.stringify(userdata));
+				
 			});
 	};
 	let rightOpen = false;
-	const riOp = function (){
-		rightOpen=true
-	}
+
 </script>
 
 <Page>
-	<Navbar title="РТверь" 
-	class="top-0 sticky"
-  
-	>
-
-	<Link href ="/kabinet" navbar iconOnly slot="right">
-		Кабинет сотрудника
-		<Icon badge="5" badgeColors={{ bg: 'bg-red-500' }}>
-		  <PersonCircleFill slot="ios" class="w-7 h-7" />
-		  <MdPerson slot="material" class="w-6 h-6" />
-		</Icon>
-	  </Link>
-
-</Navbar>
+	<Navbar title="РТверь" class="top-0 sticky">
+		{#if !rightOpen}
+			<Link href="/kabinet" navbar iconOnly slot="right">
+				Кабинет сотрудника
+				<Icon badgeColors={{ bg: 'bg-red-500' }}>
+					<MdPerson slot="material" class="w-6 h-6" />
+				</Icon>
+			</Link>
+		{:else}
+		{userdata.id}
+		<Link href="/kabinet" navbar iconOnly slot="right">
+			<Chip class="m-0.5">
+			
+				<img
+					slot="media"
+					alt="avatar"
+					class="h-8 rounded-full"
+					src="https://cdn.framework7.io/placeholder/people-100x100-3.jpg"
+				/>
+				John Doe
+		
+			</Chip>
+		</Link>
+		
+		{/if}
+	</Navbar>
 
 	<Tabbar labels={isTabbarLabels} icons={isTabbarIcons} class="left-0 bottom-0 fixed">
 		{#if isTabbarIcons}
@@ -155,7 +165,6 @@
 					</Icon>
 				</svelte:fragment>
 			</TabbarLink>
-
 		{:else}
 			<TabbarLink
 				active={activeTab === 'tab-1'}
@@ -172,13 +181,13 @@
 				onClick={() => (activeTab = 'tab-3')}
 				label={isTabbarLabels ? '' : undefined}
 			/>
-
 		{/if}
 	</Tabbar>
 
 	{#if activeTab === 'tab-1'}
 		<Block strong inset class="space-y-4">
-			<p>.
+			<p>
+				.
 				<b>Тут техника</b>
 			</p>
 			<TraktorIcon class="w-8" />
@@ -187,7 +196,7 @@
 	{#if activeTab === 'tab-2'}
 		<Block strong inset class="space-y-4">
 			<p>
-				<b>Тут 	пипл{r}</b>
+				<b>Тут пипл{r}</b>
 			</p>
 			<LudiIcon />
 		</Block>
@@ -201,21 +210,23 @@
 
 			<List strong inset>
 				<ListItem title="Тёмная тема" label>
-					<Toggle slot="after" component="div" onChange={() => toggleDarkMode()} checked={darkMode} />
+					<Toggle
+						slot="after"
+						component="div"
+						onChange={() => toggleDarkMode()}
+						checked={darkMode}
+					/>
 				</ListItem>
-	
 			</List>
 			<Login
-			username="RtverBot"
-			requestAccess={true}
-			on:auth={(data) => {
-				console.log(data.detail);
-				hello(data.detail);
-				//goto('/blog');
-			}}
-		/>
-	
+				username="RtverBot"
+				requestAccess={true}
+				on:auth={(data) => {
+					console.log(data.detail);
+					hello(data.detail);
+					//goto('/blog');
+				}}
+			/>
 		</Block>
 	{/if}
-
 </Page>
