@@ -112,8 +112,7 @@
 				</Icon>
 			</Link>
 		{:else}
-		{JSON.parse(userdata)?.first_name}
-		{JSON.parse(userdata)?.last_name}
+	
 	
 		<Link href="/kabinet" navbar iconOnly slot="right">
 			<Chip class="m-0.5">
@@ -124,7 +123,8 @@
 					class="h-8 rounded-full"
 					src={JSON.parse(userdata)?.photo_url}
 				/>
-				John Doe
+				{JSON.parse(userdata)?.first_name}
+				{JSON.parse(userdata)?.last_name}
 		
 			</Chip>
 		</Link>
