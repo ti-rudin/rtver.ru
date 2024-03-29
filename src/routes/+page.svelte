@@ -56,7 +56,7 @@
 		rtl = document.dir === 'rtl';
 	});
 	onMount(() => {
-		let userdata = localStorage.getItem('userdata');
+		userdata = localStorage.getItem('userdata');
 		if (userdata) {
 		rightOpen = true;
 		console.log('tru');
@@ -112,7 +112,9 @@
 				</Icon>
 			</Link>
 		{:else}
-		{userdata?.id}
+		{JSON.parse(userdata)?.first_name}
+		{JSON.parse(userdata)?.last_name}
+	
 		<Link href="/kabinet" navbar iconOnly slot="right">
 			<Chip class="m-0.5">
 			
@@ -120,7 +122,7 @@
 					slot="media"
 					alt="avatar"
 					class="h-8 rounded-full"
-					src="https://cdn.framework7.io/placeholder/people-100x100-3.jpg"
+					src={JSON.parse(userdata)?.photo_url}
 				/>
 				John Doe
 		
