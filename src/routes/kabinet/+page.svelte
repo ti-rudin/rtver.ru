@@ -20,9 +20,11 @@
 		Segmented,
 		SegmentedButton,
 		NavbarBackLink,
-		Popover
+		Popover,
+		Chip
 	} from 'konsta/svelte';
 	import { Login } from 'sveltegram';
+	import MdPerson from '$lib/MdPerson.svelte';
 
 	let darkMode = false;
 	let userdata;
@@ -59,10 +61,33 @@
 	const goBack = () => {
 		history.back();
 	};
+	let userIsAuth = false;
 </script>
 
 <Page>
-	<Navbar title="" class="top-0 sticky">
+	<Navbar title="" class="top-0 sticky" >
+		<div slot="right" >
+		{#if userIsAuth}
+		
+	
+		<Link href="/kabinet" navbar iconOnly slot="right">
+			<Chip class="m-0.5">
+			
+				<img
+					slot="media"
+					alt="avatar"
+					class="h-8 rounded-full"
+					src={JSON.parse(userdata)?.photo_url}
+				/>
+				{JSON.parse(userdata)?.first_name}
+				{JSON.parse(userdata)?.last_name}
+		
+			</Chip>
+		</Link>
+		
+		{/if}
+	</div>
+
 		<NavbarBackLink href="/" slot="left" >&nbsp;На главную</NavbarBackLink>
 		
 		<Segmented slot="subnavbar" strong activeButtonIndex={0} childButtonsLength={3}>

@@ -36,7 +36,7 @@
 
 	import { afterUpdate, onMount } from 'svelte';
 
-	export let colorPickerOpened;
+
 
 	let darkMode = false;
 
@@ -58,7 +58,7 @@
 	onMount(() => {
 		userdata = localStorage.getItem('userdata');
 		if (userdata) {
-		rightOpen = true;
+		userIsAuth = true;
 		console.log('tru');
 	}
 		if (userdata !== null) {
@@ -98,14 +98,14 @@
 				
 			});
 	};
-	let rightOpen = false;
+	let userIsAuth = false;
 
 </script>
 
 <Page>
 	<Navbar title="РТверь" class="top-0 sticky" >
 		<div slot="right" >
-		{#if !rightOpen}
+		{#if !userIsAuth}
 			<Link href="/kabinet" navbar iconOnly slot="right">
 				Кабинет сотрудника
 				<Icon badgeColors={{ bg: 'bg-red-500' }}>
