@@ -103,7 +103,8 @@
 </script>
 
 <Page>
-	<Navbar title="РТверь" class="top-0 sticky">
+	<Navbar title="РТверь" class="top-0 sticky" >
+		<div slot="right" >
 		{#if !rightOpen}
 			<Link href="/kabinet" navbar iconOnly slot="right">
 				Кабинет сотрудника
@@ -130,6 +131,7 @@
 		</Link>
 		
 		{/if}
+	</div>
 	</Navbar>
 
 	<Tabbar labels={isTabbarLabels} icons={isTabbarIcons} class="left-0 bottom-0 fixed">
