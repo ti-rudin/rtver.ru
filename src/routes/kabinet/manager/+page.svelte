@@ -74,19 +74,18 @@
 			<SegmentedButton href="/kabinet/manager/" small strong active>Менеджер</SegmentedButton>
 		</Segmented>
 	</Navbar>
-	<Button onClick={test} class="touch-ripple-red-500">Click me</Button>
 
 	<List strong inset>
-		<ListItem title="Тёмная тема" label>
+		<ListItem title="" label>
 			<Login
-				username="RtverBot"
-				requestAccess={true}
-				on:auth={(data) => {
-					console.log(data.detail);
-					hello(data.detail);
-					//goto('/blog');
-				}}
-			/>
+			username="RtverBot"
+			requestAccess={true}
+			on:auth={(data) => {
+				console.log(data.detail);
+				hello(data.detail);
+				//goto('/blog');
+			}}
+		/>
 		</ListItem>
 	</List>
 </Page>
