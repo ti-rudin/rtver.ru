@@ -112,7 +112,7 @@
 				</Icon>
 			</Link>
 		{:else}
-		{userdata.id}
+		{userdata?.id}
 		<Link href="/kabinet" navbar iconOnly slot="right">
 			<Chip class="m-0.5">
 			
