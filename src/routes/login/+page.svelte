@@ -53,7 +53,7 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.dir(data.r);
+				console.dir(data);
 			});
 	};
 	function test() {
