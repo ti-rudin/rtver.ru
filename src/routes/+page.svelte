@@ -140,10 +140,11 @@
 				active={activeTab === 'tab-1'}
 				onClick={() => (activeTab = 'tab-1')}
 				label={isTabbarLabels ? '' : undefined}
+				
 			>
 				<svelte:fragment slot="icon">
 					<Icon>
-						<TraktorIcon slot="material" class="w-7 h-7" />
+						<TraktorIcon slot="material"  />
 					</Icon>
 				</svelte:fragment>
 			</TabbarLink>
@@ -154,7 +155,7 @@
 			>
 				<svelte:fragment slot="icon">
 					<Icon>
-						<LudiIcon slot="material" class="w-7 h-7" />
+						<LudiIcon slot="material"  />
 					</Icon>
 				</svelte:fragment>
 			</TabbarLink>
@@ -165,7 +166,7 @@
 			>
 				<svelte:fragment slot="icon">
 					<Icon>
-						<KontraktIcon slot="material" class="w-7 h-7" />
+						<KontraktIcon slot="material"  />
 					</Icon>
 				</svelte:fragment>
 			</TabbarLink>
@@ -191,10 +192,10 @@
 	{#if activeTab === 'tab-1'}
 		<Block strong inset class="space-y-4">
 			<p>
-				.
+				
 				<b>Тут техника</b>
 			</p>
-			<TraktorIcon class="w-8" />
+			<TraktorIcon  />
 		</Block>
 	{/if}
 	{#if activeTab === 'tab-2'}
